@@ -10,5 +10,9 @@ namespace Vlad_Irina_Lab2.Models
         public string Title { get; set; }
         public string Author { get; set; }
         public string Price { get; set; }
+
+        [Display(Name = "Publishing date")]
+        [DataType(DataType.Date)]
+        public DateTime PublishingDate { get; set; }
     }
 }
