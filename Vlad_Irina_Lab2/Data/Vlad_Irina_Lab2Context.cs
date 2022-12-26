@@ -15,5 +15,7 @@ namespace Vlad_Irina_Lab2.Data
         }
 
         public DbSet<Vlad_Irina_Lab2.Models.Book> Book { get; set; } = default!;
+
+        public DbSet<Vlad_Irina_Lab2.Models.Publisher> Publisher { get; set; }
     }
 }
