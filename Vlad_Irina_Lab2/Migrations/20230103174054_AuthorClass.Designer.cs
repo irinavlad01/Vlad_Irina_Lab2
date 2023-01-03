@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vlad_Irina_Lab2.Data;
 
@@ -11,9 +12,10 @@ using Vlad_Irina_Lab2.Data;
 namespace Vlad_Irina_Lab2.Migrations
 {
     [DbContext(typeof(Vlad_Irina_Lab2Context))]
-    partial class Vlad_Irina_Lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20230103174054_AuthorClass")]
+    partial class AuthorClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,9 +33,11 @@ namespace Vlad_Irina_Lab2.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -49,8 +53,9 @@ namespace Vlad_Irina_Lab2.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int?>("AuthorID")
-                        .HasColumnType("int");
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Price")
                         .HasColumnType("nvarchar(max)");
@@ -65,8 +70,6 @@ namespace Vlad_Irina_Lab2.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("AuthorID");
 
                     b.HasIndex("PublisherID");
 
@@ -91,22 +94,11 @@ namespace Vlad_Irina_Lab2.Migrations
 
             modelBuilder.Entity("Vlad_Irina_Lab2.Models.Book", b =>
                 {
-                    b.HasOne("Vlad_Irina_Lab2.Models.Author", "Author")
-                        .WithMany("Books")
-                        .HasForeignKey("AuthorID");
-
                     b.HasOne("Vlad_Irina_Lab2.Models.Publisher", "Publisher")
                         .WithMany("Books")
                         .HasForeignKey("PublisherID");
 
-                    b.Navigation("Author");
-
                     b.Navigation("Publisher");
-                });
-
-            modelBuilder.Entity("Vlad_Irina_Lab2.Models.Author", b =>
-                {
-                    b.Navigation("Books");
                 });
 
             modelBuilder.Entity("Vlad_Irina_Lab2.Models.Publisher", b =>
