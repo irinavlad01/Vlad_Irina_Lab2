@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Vlad_Irina_Lab2.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Vlad_Irina_Lab2.Models;
 
 namespace Vlad_Irina_Lab2.Data
 {
-    public class Vlad_Irina_Lab2Context : DbContext
+    public class Vlad_Irina_Lab2Context : IdentityDbContext
     {
         public Vlad_Irina_Lab2Context (DbContextOptions<Vlad_Irina_Lab2Context> options)
             : base(options)
