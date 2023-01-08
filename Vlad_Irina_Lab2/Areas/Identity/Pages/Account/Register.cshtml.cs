@@ -129,7 +129,7 @@ namespace Vlad_Irina_Lab2.Areas.Identity.Pages.Account
             _context.Member.Add(Member);
             await _context.SaveChangesAsync();
             
-            if (ModelState.IsValid)
+            if (result.Succeeded)
             {
                 _logger.LogInformation("User created a new account with password.");
 
