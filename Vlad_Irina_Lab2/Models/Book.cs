@@ -11,6 +11,7 @@ namespace Vlad_Irina_Lab2.Models
         public string?  Title { get; set; }
         public int? AuthorID { get; set; }
         public Author? Author { get; set; } //navigation property
+        [Range(0.01, 500)]
         public string? Price { get; set; }
 
         [Display(Name = "Publishing date")]
